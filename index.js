@@ -7,6 +7,7 @@ app.get('/', function (req, res) {
 })
 
 //Launch listening server on port 8081
-app.listen(8081, function () {
-  console.log('app listening on port 8081!')
-})
+//listen to port 3000 by default
+app.listen(process.env.PORT || 3000);
+ 
+module.exports = app;
