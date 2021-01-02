@@ -5,7 +5,7 @@ steps:
   args:
   - 'build'
   - '-t'
-  - 'gcr.io/$PROJECT_ID/shopping-cart-app-trigger:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/shopping-cart-app:$SHORT_SHA'
   - '.'
 
 
@@ -13,5 +13,5 @@ steps:
   id: Push
   args:
   - 'push'
-  - 'gcr.io/$PROJECT_ID/shopping-cart-app-trigger:$SHORT_SHA'
+  - 'gcr.io/$PROJECT_ID/shopping-cart-app:$SHORT_SHA'
 # [END cloudbuild]
