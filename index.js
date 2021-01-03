@@ -36,7 +36,7 @@ app.listen(port, function() {
           "TotalPrice": price,
           "PaymentMethod": "card"
         };
-        request.post('http://localhost:12345', {cartData});
+        request.post('http://35.193.132.159', {cartData});
 
 
         app.get("/", function(req, res) {
