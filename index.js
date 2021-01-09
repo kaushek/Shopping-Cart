@@ -38,7 +38,7 @@ app.listen(port, function() {
           var key = Object.keys(data.items[items]);
           var value = Object.values(data.items[items]);
           if (value[0] == "ToothBrush" || value[0]== "soap"){
-            price = parseFloat(value[1]) + price;
+            //price = parseFloat(value[1]) + price;
             cartArray.push(data.items[items]);
           }
         }
@@ -57,11 +57,22 @@ app.listen(port, function() {
               'Content-Type': 'application/json'
           }
        }
-
        request(clientServerOptions, function (error, response) {
           console.log(response.statusCode);
           return;
        });
+
+       request.post({
+        url: 'http://kaushekkr-eval-prod.apigee.net/calculate-total-app?apikey=J8bVz4X8Lu8SYohEwO0e3dx9yHJtIAAJ',
+        json: true     
+      },
+      function(error, response, data){         
+        console.log(response.statusCode); 
+        if (response.statusCode == 200){}
+          price = parseFloat(data); 
+      }
+    )
+
 
         cartData = {  
           "OrderId": Math.floor(Math.random() * 10000),
