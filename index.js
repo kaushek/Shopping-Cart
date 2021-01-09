@@ -97,24 +97,24 @@ app.listen(port, function() {
            console.log(response.statusCode); 
            if (response.statusCode == 200)
            {
-             //call put order
-             request(
-              { method: 'PUT'
-              , uri: 'https://nalinindika90-eval-prod.apigee.net/order-persistor/put-order?apikey=AE4qCAAOeMflzIfniY3qaSBInVHvMGMa'
-              , multipart:
-                [ { 'content-type': 'application/json'
-                  ,  body: JSON.stringify( { 
-                      "user_id": Math.floor(Math.random() * 10000),
-                      "items": "ToothBrush,soap",
-                      "total_price": price
-                    })
-                  }           
-                ]
-              }
-            , function (error, response, body) {         
-                  console.log(response.statusCode);                     
-              }
-            )
+
+            var orderData = {
+              "user_id": (Math.floor(Math.random() * 10000)).toString(),
+              "items": "ToothBrush,soap",
+              "total_price": price
+            }
+             
+            request.post({
+              url: 'https://nalinindika90-eval-prod.apigee.net/order-persistor/put-order?apikey=AE4qCAAOeMflzIfniY3qaSBInVHvMGMa',
+              json: true,
+              body: orderData 
+            },
+            function(error, response, user){    
+              console.log(response.statusCode); 
+            })
+
+
+
            }
          }
        )
